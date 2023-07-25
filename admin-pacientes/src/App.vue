@@ -1,11 +1,11 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
 </script>
 
 <template>
-  <div class="text-6xl bg-orange-400">
-    Hola mundo
-  </div>
+    <div class="container mx-auto mt-10">
+        <Header></Header>
+    </div>
 </template>
 
 
