@@ -27,14 +27,17 @@
             required:true
         },    
     })
+    const emits = defineEmits(['update:email','update:nombre','update:fecha','update:sintomas','update:propietario','agregar-paciente'])
     const validar=()=>{
         if(Object.values(props).includes('')){
             alerta.mensaje="Llena todo los espacio vacios"
             alerta.tipo="error"
+            return
+            /* el return es para que vea que si esta vacio ahi muera el arrow fuction y ya no tenga que recorrer al lado de abajo */
         }
-        console.log("validando") 
+        emits('agregar-paciente');
     }
-    defineEmits(['update:email','update:nombre','update:fecha','update:sintomas','update:propietario'])
+   
 
 </script>
 <template>
