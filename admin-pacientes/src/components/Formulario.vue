@@ -1,5 +1,10 @@
 <script setup>
     import {reactive} from 'vue';
+    import Alerta from './Alerta.vue';
+    const alerta=reactive({
+        mensaje:'',
+        tipo:''
+    })
     const paciente=reactive({
         nombre: '',
         propietario:'',
@@ -8,7 +13,11 @@
         sintomas:''
     });
     const validar=()=>{
-        console.log("validando")
+        if(Object.values(paciente).includes('')){
+            alerta.mensaje="Llena todo los espacio vacios"
+            alerta.tipo="error"
+        }
+        console.log("validando") 
     }
 </script>
 <template>
@@ -20,12 +29,10 @@
             Añade pacientes y
             <span class="text-indigo-600 font-bold">Administralos</span>
         </p>
+        <Alerta :alerta="alerta"></Alerta>
         <form class="bg-white shadow-xl rounded-lg py-10 px-5 mb-10"
         @submit.prevent="validar">
             <!-- NOMBRE DE LA MASCOTA -->
-            {{ paciente.nombre }}
-            {{ paciente.fecha }}
-            {{ paciente.sintomas }}
             <div class="mb-5">
                 <label for="mascota" class="block text-gray-700 uppercase font-bold">Nombre de Mascota</label>
                 <input 
